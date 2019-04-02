@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <map>
+#include "Snake.h"
 
 class World {
 
@@ -10,15 +12,21 @@ public:
 
 	bool gameProceeds();
 	void gameLoop();
+	void makeFruit();
+	int getWidth();
+	int getHeight();
 
 private:
 
 	int width;
 	int height;
 	int latency;
+	int points;
+	int time;
 	bool gameStatus;
-	enum { UP = 0, DOWN, LEFT, RIGHT } dir;
-
+	Snake snake;
+	
+	std::multimap<int, tailxy> fruits;
 	std::vector<std::vector<int>> map;
 
 	void drawWorld();
